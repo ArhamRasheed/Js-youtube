@@ -5,10 +5,10 @@
 
 const id = Symbol('123')
 const anotherId = Symbol('123')
-console.log(id == anotherId);
+//console.log(id == anotherId);
 
 //usually to store big number javascript use bigint behind the scene to store the value, we can also use n in the end to use bigint
-const bigNumber = 356445666621314891664n
+const bigNumber = 356445666621314891664
 
 
 // Call by reference (Non Primitive)
@@ -29,4 +29,30 @@ let myObj = {
     age: "22",   
 }
 
-const myFunction 
+//Datatypes summary skipped to stack & heap
+
+//Stack(Primitive) and heap(Non-Primitive)
+
+let myYoutubename = "Arhamrasheed.com"
+
+let anothername = myYoutubename
+
+console.log(anothername)
+anothername = "chaiaurcode"
+console.log(anothername)
+console.log(myYoutubename)
+
+
+let userOne = {
+    //ye sb(non-primitive) direct heap mn jyega
+    email: "arham20@gmail.com",
+    upi: "user@ybl"
+}
+
+let usertwo = userOne
+
+usertwo.email = "Arham220@gmail.com"
+
+//since reference jata h tu duno jaga change ayega
+console.log(userOne.email)
+console.log(usertwo.email)
