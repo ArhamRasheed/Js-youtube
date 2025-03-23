@@ -34,10 +34,12 @@ console.log(myArray[1]);
 
 console.log("A",myArray);
 
-const mynew1 = myArray.slice(1,3)
+const mynew1 = myArray.slice(1,3)//does not change the original array
 
 console.log(mynew1);
 console.log("B",myArray);
 
 
-
+const mynew2 = myArray.splice(1,3)//original array ko manipulate krta h 
+console.log("C",myArray);
+console.log(mynew2);
