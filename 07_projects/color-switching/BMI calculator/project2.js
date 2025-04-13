@@ -1,12 +1,21 @@
 const form = document.querySelector('form')
 
+//form jb bhi submit hota h => either posttype or gettype
+//and sends the value to server so we need to stop the default action of form
+/*
+const height = parseInt(document.querySelector('#height').value)
+bahir krne se, jese hii page load hoga tu ap empty value select krloge before the event could happen
+*/  
+
 form.addEventListener('submit', function (event) {
     event.preventDefault();
+    // value is in string so we need to convert it into int
     const height = parseInt(document.querySelector('#height').value)
     const weight = parseInt(document.querySelector('#weight').value)
     const result = document.querySelector('#results')
     const guide = document.querySelector('#output')
 
+    //isNaN(height) => updated and new way to check for a numbe
     if (height === '' || height < 0 || isNaN(height)) {
         result.innerHTML = `Enter valid height ${weight}`;
     }
