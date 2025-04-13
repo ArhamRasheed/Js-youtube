@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai aur Code</title>
+</head>
+<body style="background-color: #212121; color:#fff;">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+    // List item create krna h
+    // "Langauge" ul ko select krna h aur li mn append krna h 
+    function addLanguage(langName){
+        const Li = document.createElement('li');
+        Li.innerHTML = `${langName}`
+        document.querySelector('.language').appendChild(Li)
+        // append krne se isko tree k end tk treverse krna prta h => optimization issue
+        // solution => DSA
+    }
+    addLanguage("python")
+    addLanguage("typescript")
+    
+
+    //optimized way
+    function addOptiLanguage(langName){
+        const li = document.createElement('li')
+        li.appendChild(document.createTextNode(langName))
+        // const addtext = document.createTextNode(langName)
+        // li.appendChild(addtext)
+        document.querySelector('.language').appendChild(li)
+    }
+    addOptiLanguage('golang')
+
+    //Editing
+    const secondLang = document.querySelector("li:nth-child(2)")
+    console.log(secondLang);
+    //secondLang.innerHTML = "Mojo"
+    const newli = document.createElement('li')
+    newli.textContent = "Mojo"
+    secondLang.replaceWith(newli);
+
+    //editing
+    const firstLang = document.querySelector("li:first-child")
+    firstLang.outerHTML = '<li>TypeScript</li>'
+
+    //remove 
+    const LastLang = document.querySelector('li:last-child')
+    LastLang.remove()
+</script>
+</html>
