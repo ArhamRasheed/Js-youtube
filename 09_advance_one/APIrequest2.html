@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GitHub Profile AJAX</title>
+  <style>
+    body {
+      background-color: #212121;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    #card {
+      background-color: #333;
+      border-radius: 10px;
+      padding: 20px;
+      width: 250px;
+      margin: 20px auto;
+      display: none;
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    }
+    #profile-pic {
+      width: 100px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="loadBtn">Load GitHub Profile</button>
+
+  <div id="card">
+    <img id="profile-pic" src="" alt="Profile Image" />
+    <h3 id="followers"></h3>
+  </div>
+
+  <script>
+    const requestURL = 'https://api.github.com/users/hiteshchoudhary';
+
+    document.getElementById("loadBtn").addEventListener("click", function () {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', requestURL);
+
+      xhr.onreadystatechange = function () {
+        console.log(xhr.readyState);
+
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          const data = JSON.parse(this.responseText);
+          console.log(data.followers);
+
+          document.getElementById("profile-pic").src = data.avatar_url;
+          document.getElementById("followers").textContent = `Followers: ${data.followers}`;
+          document.getElementById("card").style.display = "block";
+        }
+      };
+
+      xhr.send();
+    });
+  </script>
+
+</body>
+</html>
